@@ -11,7 +11,6 @@ import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import Adoption from "./components/dashboard/Adoption";
-import Shelter from "./components/dashboard/Shelter";
 import Landing from "./components/dashboard/Landing";
 
 // Check for token to keep user logged in
@@ -43,7 +42,6 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/Adoption" component={Adoption} />
-            <Route exact path="/Shelter" component={Shelter} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>

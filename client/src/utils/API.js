@@ -1,8 +1,9 @@
 import axios from "axios";
 
 export default {
- 
-  search: function(query) {
-    return  axios.get(`https://api.thedogapi.com/v1/breeds`);
+  // call router and pass in paramaters
+  GetDogs: function (zip, gender, type) {
+    console.log("api call with " + zip + " " + gender + " " + type);
+    return axios.get("api/users/dog/" + zip + "/" + type + "/" + gender);
   }
 };

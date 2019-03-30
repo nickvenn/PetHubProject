@@ -1,5 +1,4 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
@@ -8,6 +7,33 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 // Load User model
 const User = require("../../models/User");
+const fetch = require("node-fetch");
+
+router.get("/dog/:zip/:type/:gender", (req, res) => {
+    //api call with paramters
+    fetch('https://getyourpet.com/api/partnerpetsearch', {
+        method: 'POST',
+        body: JSON.stringify({
+            "ZipCode": req.params.zip,
+            "PetType":req.params.type,
+            "Gender":req.params.gender,
+            "SearchRadiusInMiles": 125,
+            "PageNumber": 1,
+        }),
+        headers: {
+            'api-key': '10E88EC7-B274-447F-9EF2-C21BD828356D',
+            "Content-Type": "application/json"
+        }
+    })
+        // .then(response => response.json())
+        .then(response => response.json())
+        .then(data => {
+            // console.log("API returned", data)
+            return res.json(data);
+        })
+        .catch(error => console.error(error))
+
+});
 
 // @route POST api/users/register
 // @desc Register user
@@ -92,5 +118,7 @@ router.post("/login", (req, res) => {
         });
     });
 });
+
+
 
 module.exports = router;
