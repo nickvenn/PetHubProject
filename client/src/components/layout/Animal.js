@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { ListItem } from "../layout/List";
-import { Row, Col } from "../layout/Grid";
+import { ListItem } from "./List";
+import { Row, Col } from "./Grid";
 
 function Book({ name, type, gender, photo }) {
   return (
@@ -10,6 +11,11 @@ function Book({ name, type, gender, photo }) {
           <h3 className="font-italic">{name}</h3>
           <h3 className="font-italic">{type}</h3>
           <h3 className="font-italic">{gender}</h3>
+        </Col>
+      </Row>
+      <Row className="flex-wrap-reverse">
+        <Col size="md-8">
+          <a href = "#"> <h3 className="font-italic">like this pet</h3></a>
         </Col>
       </Row>
       <Row>

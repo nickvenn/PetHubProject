@@ -3,7 +3,7 @@ import Container from "../layout/Containter";
 import API from "../../utils/API";
 import Form from "../layout/Form";
 import Card from "../layout/Card";
-import Book from "../layout/Book";
+import Animal from "../layout/Animal";
 import { List } from "../layout/List";
 
 
@@ -54,7 +54,7 @@ class Adoption extends Component {
       {this.state.pets.length ? (
         <List>
           {this.state.pets.map(pet => (
-            <Book
+            <Animal
               key={pet.PetId}
               name={pet.Name}
               gender={pet.Gender}
