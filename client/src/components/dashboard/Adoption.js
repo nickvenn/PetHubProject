@@ -5,20 +5,31 @@ import Form from "../layout/Form";
 import Card from "../layout/Card";
 import Animal from "../layout/Animal";
 import { List } from "../layout/List";
+import Modal from "../layout/Modal";
 
 
 class Adoption extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+
+    this.state = {
       pets: [],
       zipcode: "",
       PetType: "Dog",
       Gender: "Male",
-      message:"no pets were found",
-      Clicked: false };
+      message: "no pets were found",
+      Clicked: false,
+      show: false
+    };
   }
 
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -45,41 +56,56 @@ class Adoption extends Component {
   };
 
   render() {
-    const clicked = this.state.Clicked;
-    let testing;
-    if (clicked) {
-      testing =   
-      <Container>         
-      <Card title="Results">
-      {this.state.pets.length ? (
-        <List>
-          {this.state.pets.map(pet => (
-            <Animal
-              key={pet.PetId}
-              name={pet.Name}
-              gender={pet.Gender}
-              type={pet.PetType}
-              photo={pet.PrimaryPhotoUrl}
-            />
-          ))}
-        </List>
-      ) : (
-        <h2 className="text-center">{this.state.message}</h2>
-      )}
-    </Card>
-    </Container> 
+    const Resclicked = this.state.Clicked;
+    let results;
+    if (Resclicked) {
+      results =
+        <Container>
+          <Card title="Results">
+            {this.state.pets.length ? (
+              <List>
+                {this.state.pets.map(pet => (
+                  <Animal
+                    key={pet.PetId}
+                    name={pet.Name}
+                    gender={pet.Gender}
+                    type={pet.PetType}
+                    photo={pet.PrimaryPhotoUrl}
+                    Site={pet.ProfileUrl}
+                    Lat={pet.Latitude}
+                    Lng={pet.Longitude}
+                    show={this.show}
+                    hideModal ={this.hideModal}
+                    showModal = {this.showModal}
+                  />
+                ))}
+              </List>
+            ) : (
+                <h2 className="text-center">{this.state.message}</h2>
+              )}
+          </Card>
+        </Container>
     }
     return (
       <div>
-      <Container>
-        <Form
-          handleInputChange={this.handleInputChange}
-          handleFormSubmit={this.handleFormSubmit}
-          q={this.state.q}
-        />
-      </Container>
-      {testing}
-</div>
+        {/* <Modal show={this.state.show} handleClose={this.hideModal}>
+          <p>Modal</p>
+          <p>Data</p>
+        </Modal>
+        <button type="button" onClick={this.showModal}>
+          open
+        </button> */}
+
+        <Container>
+          <Form
+            handleInputChange={this.handleInputChange}
+            handleFormSubmit={this.handleFormSubmit}
+            q={this.state.q}
+          />
+        </Container>
+        {results}
+
+      </div>
     );
   }
 }

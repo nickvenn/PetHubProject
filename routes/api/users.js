@@ -7,6 +7,7 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 // Load User model
 const User = require("../../models/User");
+const UserLiked = require("../../models/UserLiked");
 const fetch = require("node-fetch");
 
 router.get("/dog/:zip/:type/:gender", (req, res) => {
@@ -15,8 +16,8 @@ router.get("/dog/:zip/:type/:gender", (req, res) => {
         method: 'POST',
         body: JSON.stringify({
             "ZipCode": req.params.zip,
-            "PetType":req.params.type,
-            "Gender":req.params.gender,
+            "PetType": req.params.type,
+            "Gender": req.params.gender,
             "SearchRadiusInMiles": 125,
             "PageNumber": 1,
         }),
@@ -33,6 +34,11 @@ router.get("/dog/:zip/:type/:gender", (req, res) => {
         })
         .catch(error => console.error(error))
 
+});
+
+router.post("/likes", (req, res) => {
+        // Form validation
+    console.log(JSON.stringify(req.body));
 });
 
 // @route POST api/users/register
