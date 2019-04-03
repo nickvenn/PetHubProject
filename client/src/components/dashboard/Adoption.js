@@ -5,7 +5,6 @@ import Form from "../layout/Form";
 import Card from "../layout/Card";
 import Animal from "../layout/Animal";
 import { List } from "../layout/List";
-import Modal from "../layout/Modal";
 
 
 class Adoption extends Component {
@@ -74,7 +73,7 @@ class Adoption extends Component {
                     Site={pet.ProfileUrl}
                     Lat={pet.Latitude}
                     Lng={pet.Longitude}
-                    show={this.show}
+                    show={this.state.show}
                     hideModal ={this.hideModal}
                     showModal = {this.showModal}
                   />
@@ -88,14 +87,6 @@ class Adoption extends Component {
     }
     return (
       <div>
-        {/* <Modal show={this.state.show} handleClose={this.hideModal}>
-          <p>Modal</p>
-          <p>Data</p>
-        </Modal>
-        <button type="button" onClick={this.showModal}>
-          open
-        </button> */}
-
         <Container>
           <Form
             handleInputChange={this.handleInputChange}

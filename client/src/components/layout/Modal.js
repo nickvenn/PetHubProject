@@ -1,6 +1,7 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Mymap from "../dashboard/Map";
 
 function myModal({show, handleClose, lat, lng}) {
   return (
@@ -8,7 +9,7 @@ function myModal({show, handleClose, lat, lng}) {
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
-          <Modal.Body>lat: {lat} lng: {lng}</Modal.Body>
+          <Modal.Body><Mymap lat={lat} lng={lng}></Mymap></Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
