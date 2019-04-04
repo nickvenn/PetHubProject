@@ -9,7 +9,7 @@ function myModal({show, handleClose, lat, lng}) {
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
-          <Modal.Body><Mymap lat={lat} lng={lng}></Mymap></Modal.Body>
+          <Modal.Body>lat={lat} lng={lng}</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close

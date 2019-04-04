@@ -17,7 +17,7 @@ function PetCard({ name, type, gender, photo, Site,Lat, Lng,show, hideModal, sho
       </Row>
       <Row className="flex-wrap-reverse">
         <Col size="md-8">
-          <a href="#"> <h3 className="font-italic">like this pet</h3></a>
+          <a href="userliked"> <h3 className="font-italic">like this pet</h3></a>
         </Col>
       </Row>
       <Row>

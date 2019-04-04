@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 // Create Schema
-const UserLikedSchema = new Schema({
+const SavedPetsSchema = new Schema({
   UserID: {
     type: String,
     required: true
@@ -11,6 +11,6 @@ const UserLikedSchema = new Schema({
     required: true
   },
 });
-const UserLiked = mongoose.model("UserLiked", UserLikedSchema);
+const UserLiked = mongoose.model("UserLiked", SavedPetsSchema);
 
 module.exports = UserLiked;
