@@ -7,7 +7,7 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 // Load User model
 const User = require("../../models/User");
-const UserLiked = require("../../models/UserLiked");
+const SavedPets = require("../../models/SavedPets");
 const fetch = require("node-fetch");
 
 router.get("/dog/:zip/:type/:gender", (req, res) => {
