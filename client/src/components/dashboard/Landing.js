@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
 
+
 class Landing extends Component {
   render() {
     const { user } = this.props.auth;

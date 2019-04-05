@@ -5,7 +5,10 @@ function myForm({ zipcode, PetType, Gender, handleInputChange, handleFormSubmit 
   return (
     <Form
     onSubmit={handleFormSubmit}>
-      <Row>
+      <Row
+       style={{
+        paddingTop: '25px',
+      }}>
         <Col>
           <input
             className="form-control"
@@ -16,6 +19,7 @@ function myForm({ zipcode, PetType, Gender, handleInputChange, handleFormSubmit 
             name="zipcode"
             onChange={handleInputChange}
             required
+            padding="10px"
           />
         </Col>
         </Row>

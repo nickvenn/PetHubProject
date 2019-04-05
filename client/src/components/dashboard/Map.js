@@ -35,7 +35,9 @@ export class MapContainer extends Component {
           centerAroundCurrentLocation
           google={this.props.google}
         >
-          <Marker onClick={this.onMarkerClick} name={this.props.Name} position={{lat: this.props.Latitude, lng: this.props.Longitude}} /> 
+        <Marker onClick={this.onMarkerClick}
+                name={'Current location'} />          
+                <Marker onClick={this.onMarkerClick} name={this.props.Name} position={{lat: this.props.Latitude, lng: this.props.Longitude}} /> 
           {/* {this.props.pets ? this.props.pets.map(p => 
           <Marker onClick={this.onMarkerClick} name={p.Name} position={{lat: p.Latitude, lng: p.Longitude}} /> 
           ): console.log("no pets yet!")} */}

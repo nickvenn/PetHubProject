@@ -7,6 +7,10 @@ import PropTypes from "prop-types";
 import { logoutUser } from "../../actions/authActions";
 
 class Navigation extends React.Component {
+  onLogoutClick = e => {
+    e.preventDefault();
+    this.props.logoutUser();
+};
   render() {
     const { user } = this.props.auth;
     return (
@@ -15,13 +19,17 @@ class Navigation extends React.Component {
           <Navbar.Brand href="#home">PetBook</Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/Adoption">Adoption</Nav.Link>
+            <Nav.Link href="/Dashboard">Adoption</Nav.Link>
           </Nav>
           <Form inline>
           <Nav className="mr-auto">
           <Nav.Link href="/">Logged in as: {user.name}</Nav.Link>
             <Nav.Link href="/register">Register</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
+             <button onClick={this.onLogoutClick}
+             className="btn btn-large waves-effect waves-light hoverable blue accent-3">
+             Logout
+            </button>
           </Nav>
           </Form>
         </Navbar>

@@ -20,7 +20,6 @@ class Adoption extends Component {
       zipcode: "",
       PetType: "Dog",
       Gender: "Male",
-      message: "no pets were found",
       Lat :"",
       Lng: "",
       Name: "",
@@ -69,7 +68,6 @@ class Adoption extends Component {
           pets: res.data
         })
         console.log(res.data);
-        this.GetCord();
       }
       )
       .catch(err => console.log(err));
