@@ -47,7 +47,8 @@ class Adoption extends Component {
     this.getDogs();
   };
 
-  GetLatitue = () =>{
+  GetCord = () =>{
+    console.log();
   }
 
   getDogs = () => {
@@ -60,6 +61,7 @@ class Adoption extends Component {
       }
       )
       .catch(err => console.log(err));
+    this.GetCord();
   };
 
   render() {
@@ -107,7 +109,9 @@ class Adoption extends Component {
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
-          <Modal.Body className="Modal-Body"><Map></Map></Modal.Body>
+          <Modal.Body className="Modal-Body">
+          <Map></Map>
+          </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>
               Close
