@@ -1,0 +1,13 @@
+.Modal {
+    width:50%;
+    height:100%;
+  margin-top: 5%;
+  outline:none;
+  
+    }
+  
+    .Modal-Body {
+      height: 50vh;
+      width: 50vh;
+      outline:none;
+    }

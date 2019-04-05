@@ -1,26 +1,27 @@
 import React from "react";
+import { Form, Col, Row, Button } from "react-bootstrap";
 
-function Form({ zipcode, PetType, Gender, handleInputChange, handleFormSubmit }) {
+function myForm({ zipcode, PetType, Gender, handleInputChange, handleFormSubmit }) {
   return (
-    <form>
-      <div className="form-group">
-        <label htmlFor="Query">
-          <strong>Zipcode</strong>
-        </label>
-        <input
-          className="form-control"
-          id="Zip"
-          type="text"
-          value={zipcode}
-          placeholder="Zip Code"
-          name="zipcode"
-          onChange={handleInputChange}
-          required
-        />
-        <label htmlFor="Query">
-          <strong>Pet Type</strong>
-        </label>
-        <select
+    <Form
+    onSubmit={handleFormSubmit}>
+      <Row>
+        <Col>
+          <input
+            className="form-control"
+            id="Zip"
+            type="text"
+            value={zipcode}
+            placeholder="Zip Code"
+            name="zipcode"
+            onChange={handleInputChange}
+            required
+          />
+        </Col>
+        </Row>
+        <Row>
+        <Col>
+           <select
           className="form-control"
           id="pet"
           type="text"
@@ -31,11 +32,9 @@ function Form({ zipcode, PetType, Gender, handleInputChange, handleFormSubmit })
           <option>Dog</option>
           <option>Cat</option>
         </select>
-
-        <label htmlFor="Query">
-          <strong>Gender</strong>
-        </label>
-        <select
+        </Col>
+        <Col>
+            <select
           className="form-control"
           id="pet"
           type="text"
@@ -46,19 +45,14 @@ function Form({ zipcode, PetType, Gender, handleInputChange, handleFormSubmit })
           <option>Male</option>
           <option>Female</option>
         </select>
-
-      </div>
-      <div className="pull-right">
-        <button
-          onClick={handleFormSubmit}
-          type="submit"
-          className="btn btn-lg btn-danger float-right"
-        >
-          Search
-        </button>
-      </div>
-    </form>
+        </Col>
+      </Row>
+      <Row>
+      <Button type="submit">Search</Button>
+        </Row>
+    </Form>
+   
   );
 }
 
-export default Form;
+export default myForm;

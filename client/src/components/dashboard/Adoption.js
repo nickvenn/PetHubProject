@@ -2,14 +2,18 @@ import React, { Component } from "react";
 import Container from "../layout/Containter";
 import API from "../../utils/API";
 import Form from "../layout/Form";
-import Card from "../layout/Card";
-import Animal from "../layout/Animal";
 import { List } from "../layout/List";
+import Card from "../layout/Card";
+import { Modal, Row } from 'react-bootstrap';
+import "../layout/Modal/ModalCSS.css";
+import Map from "../dashboard/Map"
 
 
 class Adoption extends Component {
   constructor(props) {
     super(props);
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
 
     this.state = {
       pets: [],
@@ -17,18 +21,21 @@ class Adoption extends Component {
       PetType: "Dog",
       Gender: "Male",
       message: "no pets were found",
+      Lat :"",
+      Lng: "",
+      Name: "",
       Clicked: false,
-      show: false
+      show: false,
     };
+
+  }
+  handleClose() {
+    this.setState({ show: false });
   }
 
-  showModal = () => {
+  handleShow() {
     this.setState({ show: true });
-  };
-
-  hideModal = () => {
-    this.setState({ show: false });
-  };
+  }
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -42,16 +49,31 @@ class Adoption extends Component {
     this.getDogs();
   };
 
+  // GetCord = () => {
+  //   // eslint-disable-next-line array-callback-return
+  //   return this.state.pets.map(item => {
+  //     var pets = { Latitude: item.Latitude, Longitude: item.Longitude, Name: item.Name };
+  //     return pets
+  //   });
+  // }
+
+  handleAnimalClick = (lng,lat,name) => {
+    this.setState({Lat: lat, Lng: lng, Name: name})
+    this.handleShow();
+  };
+
   getDogs = () => {
     API.GetDogs(this.state.zipcode, this.state.Gender, this.state.PetType)
       .then(res => {
-        console.log(res.data);
         this.setState({
           pets: res.data
         })
+        console.log(res.data);
+        this.GetCord();
       }
       )
       .catch(err => console.log(err));
+
   };
 
   render() {
@@ -60,34 +82,47 @@ class Adoption extends Component {
     if (Resclicked) {
       results =
         <Container>
-          <Card title="Results">
-            {this.state.pets.length ? (
+        {this.state.pets.length ? (
               <List>
+                <Row>
                 {this.state.pets.map(pet => (
-                  <Animal
+                  <Card
                     key={pet.PetId}
-                    name={pet.Name}
-                    gender={pet.Gender}
-                    type={pet.PetType}
-                    photo={pet.PrimaryPhotoUrl}
+                    Name={pet.Name}
+                    Gender={pet.Gender}
+                    Type={pet.PetType}
+                    Photo={pet.PrimaryPhotoUrl}
                     Site={pet.ProfileUrl}
+                    Breed={pet.BreedsForDisplay}
+                    Age={pet.AgeYears}
+                    Months={pet.AgeMonths}
+                    City={pet.City}
+                    State={pet.State}
                     Lat={pet.Latitude}
                     Lng={pet.Longitude}
-                    show={this.state.show}
-                    hideModal ={this.hideModal}
-                    showModal = {this.showModal}
+                    handleAnimalClick={this.handleAnimalClick}
                   />
                 ))}
+                </Row>
               </List>
             ) : (
                 <h2 className="text-center">{this.state.message}</h2>
               )}
-          </Card>
-        </Container>
+       </Container>
     }
     return (
       <div>
         <Container>
+          <Modal
+            className="Modal"
+            show={this.state.show}
+            onHide={this.handleClose}>
+            <Modal.Body className="Modal-Body">
+              {/* <Map pets={this.GetCord()}>
+              </Map> */}
+              <Map Latitude={this.state.Lat} Longitude={this.state.Lng} Name={this.state.Name}></Map>
+            </Modal.Body>
+          </Modal>
           <Form
             handleInputChange={this.handleInputChange}
             handleFormSubmit={this.handleFormSubmit}
