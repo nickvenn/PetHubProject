@@ -13,7 +13,6 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Adoption from "./components/dashboard/Adoption";
 import Landing from "./components/dashboard/Landing";
 import map from "./components/dashboard/Map";
-import PetSaved from "./components/dashboard/PetsSaved";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -44,7 +43,6 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/Adoption" component={Adoption} />
-            <Route exact path="/PetsSaved" component={PetSaved} />
             <Route exact path="/Map" component={map} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />

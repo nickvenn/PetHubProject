@@ -16,7 +16,6 @@ class Navigation extends React.Component {
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/Adoption">Adoption</Nav.Link>
-            <Nav.Link href="/PetsSaved">Pets Saved</Nav.Link>
           </Nav>
           <Form inline>
           <Nav className="mr-auto">

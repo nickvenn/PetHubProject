@@ -5,11 +5,16 @@ import Form from "../layout/Form";
 import Card from "../layout/Card";
 import Animal from "../layout/Animal";
 import { List } from "../layout/List";
+import { Button, Modal } from 'react-bootstrap';
+import "../layout/Modal/ModalCSS.css";
+import Map from "../dashboard/Map"
 
 
 class Adoption extends Component {
   constructor(props) {
     super(props);
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
 
     this.state = {
       pets: [],
@@ -18,17 +23,17 @@ class Adoption extends Component {
       Gender: "Male",
       message: "no pets were found",
       Clicked: false,
-      show: false
+      show: false,
     };
+
+  }
+  handleClose() {
+    this.setState({ show: false });
   }
 
-  showModal = () => {
+  handleShow() {
     this.setState({ show: true });
-  };
-
-  hideModal = () => {
-    this.setState({ show: false });
-  };
+  }
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -42,10 +47,13 @@ class Adoption extends Component {
     this.getDogs();
   };
 
+  GetLatitue = () =>{
+  }
+
   getDogs = () => {
     API.GetDogs(this.state.zipcode, this.state.Gender, this.state.PetType)
       .then(res => {
-        console.log(res.data);
+        console.log(res.data[0].Latitude);
         this.setState({
           pets: res.data
         })
@@ -55,6 +63,7 @@ class Adoption extends Component {
   };
 
   render() {
+
     const Resclicked = this.state.Clicked;
     let results;
     if (Resclicked) {
@@ -74,8 +83,8 @@ class Adoption extends Component {
                     Lat={pet.Latitude}
                     Lng={pet.Longitude}
                     show={this.state.show}
-                    hideModal ={this.hideModal}
-                    showModal = {this.showModal}
+                    hideModal={this.hideModal}
+                    showModal={this.showModal}
                   />
                 ))}
               </List>
@@ -88,6 +97,26 @@ class Adoption extends Component {
     return (
       <div>
         <Container>
+          <Button variant="secondary" onClick={this.handleShow}>
+            open map
+            </Button>
+          <Modal
+            className="Modal"
+            show={this.state.show}
+            onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="Modal-Body"><Map></Map></Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={this.handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+          </Modal>
           <Form
             handleInputChange={this.handleInputChange}
             handleFormSubmit={this.handleFormSubmit}

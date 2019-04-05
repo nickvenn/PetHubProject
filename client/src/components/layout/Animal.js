@@ -2,10 +2,11 @@
 import React from "react";
 import { ListItem } from "./List";
 import { Row, Col } from "./Grid";
-import Modal from "./Modal";
+import { Button, Modal } from 'react-bootstrap';
+import Map from "../dashboard/Map";
 
 
-function PetCard({ name, type, gender, photo, Site,Lat, Lng,show, hideModal, showModal }) {
+function PetCard({ name, type, gender, photo, Site, lat, lng, show, handle, handleShow }) {
   return (
     <ListItem>
       <Row className="flex-wrap-reverse">
@@ -17,7 +18,7 @@ function PetCard({ name, type, gender, photo, Site,Lat, Lng,show, hideModal, sho
       </Row>
       <Row className="flex-wrap-reverse">
         <Col size="md-8">
-          <a href="userliked"> <h3 className="font-italic">like this pet</h3></a>
+          <a href="#"> <h3 className="font-italic">like this pet</h3></a>
         </Col>
       </Row>
       <Row>
@@ -29,11 +30,7 @@ function PetCard({ name, type, gender, photo, Site,Lat, Lng,show, hideModal, sho
             <input type="submit" value="More" />
 
           </form>
-          <Modal show={show} handleClose={hideModal} lat={Lat} lng={Lng}>
-        </Modal>
-        <button type="button" onClick={showModal}>
-          open
-        </button>
+
         </Col>
       </Row>
     </ListItem>
