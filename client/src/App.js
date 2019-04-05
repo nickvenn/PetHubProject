@@ -10,7 +10,6 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
-import Adoption from "./components/dashboard/Adoption";
 import Landing from "./components/dashboard/Landing";
 import map from "./components/dashboard/Map";
 
@@ -42,7 +41,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/Adoption" component={Adoption} />
+            <Route exact path="/Adoption" component={Dashboard} />
             <Route exact path="/Map" component={map} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
