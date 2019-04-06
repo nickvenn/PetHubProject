@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
+const path = require("path");
 const users = require("./routes/api/users");
 const app = express();
 
@@ -16,6 +17,9 @@ app.use(bodyParser.json());
 if(process.env.NODE_ENV === "production"){
   app.use(express.static("client/build"));
 }
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 // DB Config
 const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
