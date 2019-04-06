@@ -11,16 +11,17 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-// DB Config
+// // DB Config
 const db = require("./config/keys").mongoURI;
-// Connect to MongoDB
-mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log("MongoDB successfully connected"))
-  .catch(err => console.log(err));
+// // Connect to MongoDB
+// console.log(db);
+// mongoose
+//   .connect(
+//     db,
+//     { useNewUrlParser: true }
+//   )
+//   .then(() => console.log("MongoDB successfully connected"))
+//   .catch(err => console.log(err));
 // Passport middleware
 app.use(passport.initialize());
 // Passport config
@@ -29,3 +30,7 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));
+
+
+const MONGODB_URI = db || 'mongodb://localhost/test';
+mongoose.connect(MONGODB_URI).then(() => console.log("heroku mongodb connected!"));
