@@ -12,7 +12,7 @@ const fetch = require("node-fetch");
 require('dotenv').config();
 
 
-router.get("/dog/:zip/:/miles/:type/:gender", (req, res) => {
+router.get("/dog/:zip/:miles/:type/:gender", (req, res) => {
     //api call with paramters
     fetch('https://getyourpet.com/api/partnerpetsearch', {
         method: 'POST',

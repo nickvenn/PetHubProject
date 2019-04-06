@@ -25,7 +25,7 @@ class Dashboard extends Component {
 
     this.state = {
       pets: [],
-      Radius:"",
+      Radius:"150",
       zipcode: "",
       PetType: "Dog",
       Gender: "Male",
@@ -136,7 +136,6 @@ class Dashboard extends Component {
           <Form
             handleInputChange={this.handleInputChange}
             handleFormSubmit={this.handleFormSubmit}
-            q={this.state.q}
           />
         </Container>
         {results}
