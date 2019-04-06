@@ -33,4 +33,4 @@ app.listen(port, () => console.log(`Server up and running on port ${port} !`));
 
 
 const MONGODB_URI = db || 'mongodb://localhost/test';
-mongoose.connect(MONGODB_URI).then(() => console.log("heroku mongodb connected!"));
+mongoose.connect(MONGODB_URI).then(() => console.log("heroku mongodb connected! " + MONGODB_URI));
