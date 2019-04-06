@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const users = require("./routes/api/users");
 const app = express();
+
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
@@ -11,17 +12,22 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+
+if(process.env.NODE_ENV === "production"){
+  app.use(express.static("client/build"));
+}
 // DB Config
 const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
-console.log(db);
-mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log("MongoDB successfully connected"))
-  .catch(err => console.log(err));
+mongoose.connect(db,{useNewUrlParser: true} || "mongodb://user:United32@ds139844.mlab.com:39844/heroku_3vzql241")
+.then(() => console.log("MONGODB CONNECTED")).catch(err => console.log(err));
+// mongoose
+//   .connect(
+//     db,
+//     { useNewUrlParser: true }
+//   )
+//   .then(() => console.log("MongoDB successfully connected"))
+//   .catch(err => console.log(err));
 // Passport middleware
 app.use(passport.initialize());
 // Passport config
