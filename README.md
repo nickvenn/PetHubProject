@@ -15,4 +15,4 @@ full-stack login/authorization app using the MERN stack (MongoDB for our databas
 
 ## Authors
 
-*Nick Vennarucci
+Nick Vennarucci
