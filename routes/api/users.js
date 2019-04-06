@@ -38,10 +38,10 @@ router.get("/dog/:zip/:miles/:type/:gender", (req, res) => {
 
 });
 
-router.post("/likes", (req, res) => {
-        // Form validation
-    console.log(JSON.stringify(req.body));
+router.get("/", (req, res) => {
+    console.log("HI");
 });
+
 
 // @route POST api/users/register
 // @desc Register user
