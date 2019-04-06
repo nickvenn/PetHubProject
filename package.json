@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/nickvenn/PetHub_Project03/issues"
   },
-  "homepage": "https://github.com/nickvenn/PetHub_Project03#readme",
+  "homepage": "https://murmuring-savannah-98156.herokuapp.com/",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
