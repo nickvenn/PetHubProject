@@ -16,9 +16,9 @@ class Landing extends Component {
         <div className="row">
           <div className="col s12 center-align">
             <h4>
-              <b>Build</b> a login/auth app with the{" "}
-              <span style={{ fontFamily: "monospace" }}>MERN</span> stack from
-              scratch
+              <b>Find</b> a pet for adoption in one place{" "}
+              {/* <span style={{ fontFamily: "monospace" }}>MERN</span> stack from
+              scratch */}
             </h4>
             <h4>
               <b> {user.name}</b>

@@ -24,7 +24,7 @@ router.get("/dog/:zip/:miles/:type/:gender", (req, res) => {
             "PageNumber": 1,
         }),
         headers: {
-            'api-key': "10E88EC7-B274-447F-9EF2-C21BD828356D",
+            'api-key': '10E88EC7-B274-447F-9EF2-C21BD828356D',
             "Content-Type": "application/json"
         }
     })
@@ -38,7 +38,10 @@ router.get("/dog/:zip/:miles/:type/:gender", (req, res) => {
 
 });
 
-
+router.post("/likes", (req, res) => {
+        // Form validation
+    console.log(JSON.stringify(req.body));
+});
 
 // @route POST api/users/register
 // @desc Register user

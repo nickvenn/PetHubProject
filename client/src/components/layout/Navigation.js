@@ -21,7 +21,7 @@ class Navigation extends React.Component {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/Dashboard">Adoption</Nav.Link>
           </Nav>
-          <Form inline>
+          {/* <Form inline> */}
             <Nav className="mr-auto">
               <Nav.Link href="/">Logged in as: {user.name}</Nav.Link>
               <Nav.Link href="/register">Register</Nav.Link>
@@ -30,7 +30,7 @@ class Navigation extends React.Component {
                 Logout
             </Nav.Link >
             </Nav>
-          </Form>
+          {/* </Form> */}
         </Navbar>
       </div>
     );
