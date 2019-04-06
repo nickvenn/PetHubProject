@@ -1,10 +1,16 @@
+
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
-const path = require("path");
 const users = require("./routes/api/users");
 const app = express();
+const path = require("path");
+
+if(process.env.NODE_ENV === 'production'){
+  //set static folder
+  app.use(express.static(path.join(__dirname, 'client/build')));
+}
 
 // Bodyparser middleware
 app.use(
@@ -13,37 +19,26 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  app.get("/*", function(req, res) {
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
-  });
-}
-
-else {
-  app.use(express.static(path.join(__dirname, '/client/public')));
-  app.get("/*", function(req, res) {
-    res.sendFile(path.join(__dirname, "./client/public/index.html"));
-  });
-}
+// DB Config
+const db = require("./config/keys").mongoURI2;
+// Connect to MongoDB
+mongoose
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(err => console.log(err));
+// Passport middleware
 app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 
-// DB Config
-const db = require("./config/keys").MONGODB_URI;
-// Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://user:United32@ds139844.mlab.com:39844/heroku_3vzql241",
-{
-    useCreateIndex: true,
-    useNewUrlParser: true
-}
-).then(() => console.log("MONGODB CONNECTED")).catch(err => console.log(err));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));
-
-
