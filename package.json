@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/nickvenn/PetHub_Project03/issues"
   },
-  "homepage": "https://murmuring-savannah-98156.herokuapp.com/",
+  "homepage": "https://blooming-springs-66239.herokuapp.com/",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
