@@ -1,0 +1,30 @@
+.row .col {
+    float: none;
+}
+
+a{
+    text-align: center;
+    display:inline-block;
+}
+
+form{
+    width: 340px;
+    height: 340px;
+    display: inline-block;
+}
+
+.Register {
+    right: 0px;
+    left: 0px;
+    border-top-width: 50px;
+    overflow: hidden;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top:40px;;
+}
+
+.input-field>label{
+    color:black;
+}

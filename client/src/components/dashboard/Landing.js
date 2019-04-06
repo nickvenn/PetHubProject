@@ -4,13 +4,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-
-
+import Container from "../layout/Containter";
+import "../css/Landing.css";
 
 class Landing extends Component {
   render() {
     const { user } = this.props.auth;
     return (
+      <Container>
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
           <div className="col s12 center-align">
@@ -50,6 +51,7 @@ class Landing extends Component {
           </div>
         </div>
       </div>
+      </Container>
     );
   }
 }

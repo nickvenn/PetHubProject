@@ -1,0 +1,31 @@
+.Adoption > .container::before{
+    right: 0px;
+    left: 0px;
+    top: 100px;
+    border-top-width: 50px;
+    overflow: hidden;
+    margin-bottom: 50px;
+  }
+  
+  .Adoption > .container::after {
+    content: "";
+    background: url(../images/husky.jpg);
+    background-repeat: repeat;
+    background-size: 400px 600px;
+    align-content: center;
+    opacity: 0.6;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
+
+  .s12{
+    margin-top:30px;
+  }
+
+  h2{
+    color: #ff4511d5; font-size: 24px; font-weight:600; font-family: 'Signika', sans-serif; padding-bottom: 10px;
+  }

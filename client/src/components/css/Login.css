@@ -1,0 +1,32 @@
+.row .col {
+    float: none;
+}
+
+a{
+    text-align: center;
+    display:inline-block;
+}
+
+form{
+    width: 340px;
+    height: 340px;
+    display: inline-block;
+}
+
+
+.Login {
+    content: "";
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-content:center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top:60px;
+}
