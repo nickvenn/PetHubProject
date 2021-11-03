@@ -38,7 +38,7 @@
     "passport-jwt": "^4.0.0",
     "prop-types": "^15.7.2",
     "react-google-maps-loader": "^4.2.5",
-    "validator": "^10.9.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
